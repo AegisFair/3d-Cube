@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var cube = document.getElementsByClassName("cube")[0];
+                document.onmousemove = function(eventObj){
+                        cube.style="transform: rotateX("+eventObj.pageY+"deg) rotateY("+eventObj.pageX+"deg);";
+                }
+        }
+    </script>
+    <style>
+        body {
+            perspective: 1500px;
+            perspective-origin: 50% 50%;
+        }
+        .cube {
+            width: 500px;
+            height: 500px;
+            margin: 200px auto;
+            position: relative;
+
+            user-select: none;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+
+            /* transform: rotateY(20deg); */
+            /* animation-name: turnCube;
+            animation-duration: 10s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear; */
+        }
+        .cube > div {
+            display: flex;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            border: 3px dashed black;
+            position: absolute;
+
+            font-size: 5em;
+            color: white;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.7;
+        }
+        .front {
+            transform: translate3d(0, 0, 250px);
+            
+        }
+        .back {
+            transform: rotateY(180deg) translate3d(0, 0, 250px);
+            background: #555;
+        }
+        .left {
+            /* transform-origin: 0 center; */
+            transform: rotateY(-90deg) translate3d(0,0,250px);
+            background: #9F0000; 
+        }
+        .right {
+            transform: rotateY(90deg) translate3d(0,0,250px);
+            background: #ff0000;
+        }
+        .top {
+            transform: rotateX(90deg) translate3d(0,0,250px);
+            background: #009f00;
+        }
+        .bottom {
+            transform: rotateX(-90deg) translate3d(0,0,250px);
+            background: #00e100;
+        }
+        @keyframes turnCube {
+            0% {
+                transform: rotateY(0);
+            }
+            to {
+                transform: rotateY(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cube">
+        <div class="front">front</div>
+        <div class="back">back</div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+        <div class="top">top</div>
+        <div class="bottom">bottom</div>
+    </div>
+</body>
+
+</html>
